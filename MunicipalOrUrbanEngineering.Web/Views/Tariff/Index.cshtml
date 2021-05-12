@@ -1,0 +1,182 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+
+<div id="CreateDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Создать новый элемент</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Тип услуги</label>
+                        <select id="create-service-types" class="form-control"></select>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Единица измерения</label>
+                        <input readonly="readonly" type="text" class="form-control" id="create-unit-name">
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Стоимость (руб.)</label>
+                        <input type="number" class="form-control" id="create-value">
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Стандартное значение</label>
+                        <input type="number" class="form-control" id="create-default-data">
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Начало действия тарифа</label>
+                        <input type="month" class="form-control" id="create-start-tariff">
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Последний месяц действия тарифа</label>
+                        <input type="month" class="form-control" id="create-end-tariff">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="CreateItem()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DeleteDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение удаления</b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот элемент?
+                <input id="delete-id" hidden="hidden" readonly="readonly" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteConfirm()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DeleteDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение удаления</b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот элемент?
+                <input id="delete-id" hidden="hidden" readonly="readonly" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteConfirm()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EndDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение </b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите завершить этот тариф?
+                <input id="delete-id" hidden="hidden" readonly="readonly" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="EndConfirm()">Завершить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<br />
+<div class="row">
+    <h3>
+        Тарифы @{@ViewData["flat"]}
+    </h3>
+    <input id="flat-id" hidden="hidden" readonly="readonly" value=" @{@ViewData["flatId"]}"/>
+</div>
+<div class="row">
+    <h3>
+        На дату:
+        @{@ViewData["date"]}
+    </h3>
+</div>
+<div class="col-3">
+  
+    <div class="row">
+        <button type="button" class="btn btn-sm btn-primary" onclick="ShowCreate()">Добавить тариф</button>
+    </div>
+</div>
+<br />
+<table class="table table-hover table-bordered" id="tarifftable">
+    <thead>
+        <tr>
+            <th>
+                Вид услуги
+            </th>
+            <th>
+                Стоимость (руб.)
+            </th>
+            <th>
+                Стандартное значение
+            </th>
+            <th>
+                Единица измерения
+            </th>
+            <th>
+                Начало
+            </th>
+            <th>
+                Окончание
+            </th>
+            <th width="170px">
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tarifftablebody">
+    </tbody>
+</table>
+<br />
+<hr />
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/Tariff.js"></script>
+}

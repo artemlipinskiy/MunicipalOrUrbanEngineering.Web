@@ -1,0 +1,124 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+<div id="CreateDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Создать новый элемент</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Название</label>
+                        <input type="text" class="form-control" id="create-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Описание</label>
+                        <input type="text" class="form-control" id="create-description">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Единица измерения</label>
+                        <input type="text" class="form-control" id="create-unit-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Показания по счетчикам</label>
+                        <input type="checkbox" class="form-control" id="create-is-counter">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="CreateItem()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DeleteDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение удаления</b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот элемент?
+                <input id="delete-id" hidden="hidden" readonly="readonly" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteConfirm()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<br />
+<div class="col-3">
+    <div class="row">
+        <h3>Виды услуг</h3>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-sm btn-primary" onclick="ShowCreate()">Создать новый вид услуги</button>
+    </div>
+</div>
+<br />
+<table class="table table-hover table-bordered" id="servicetypetable">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                Описание
+            </th>
+            <th>
+                Единица измерения
+            </th>
+            <th>
+                Счетчик
+            </th>
+            <th width="170px">
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody id="servicetypetablebody">
+    </tbody>
+</table>
+<br />
+<hr />
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/ServiceType.js"></script>
+}

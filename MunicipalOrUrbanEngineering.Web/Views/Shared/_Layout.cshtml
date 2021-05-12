@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MunicipalOrUrbanEngineering.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/home/index">Система ЖКХ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    @if (User.IsInRole("Owner"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/building/MyFlats">Мои квартиры</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/request/MyRequest">Мои запросы</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("SysAdmin") || User.IsInRole("Employee"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/building/index">Квартиры</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/request/index">Запросы</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/BulletinBoard/index">Объявления</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/PaymentPeriod/index">Расчетные периоды</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/servicetype/index">Виды услуг</a>
+                        </li>
+                        @if (User.IsInRole("SysAdmin"))
+                        {
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/history/index">История</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/account/users">Пользователи</a>
+                            </li>
+                        }
+
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("SysAdmin") || User.IsInRole("Employee"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Регистрация
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if (User.IsInRole("SysAdmin"))
+                                    {
+
+                                    @*<a class="dropdown-item" href="/Account/Register">Администратор</a>*@
+                                        <a class="dropdown-item" href="/Account/RegisterEmployeePage">Сотрудник ЖКХ</a>
+                                    }
+                                    <a class="dropdown-item" href="/Account/RegisterOwnerPage">Владелец квартиры</a>
+                                </div>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="Logout()">Выйти</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="Login()">Вход</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - MunicipalOrUrbanEngineering.Web 
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

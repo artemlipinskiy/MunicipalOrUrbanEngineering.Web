@@ -1,0 +1,37 @@
+﻿
+<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+
+<div id="BulletinDetailsDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <input id="delete-bulletin-id" hidden="hidden" readonly="readonly" />
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel"><b id="details-title"></b></h2>
+            </div>
+            <div class="modal-body" id="details-text">
+               
+            </div>
+            <div class="modal-footer">
+                <h4 id="details-author">Автор: </h4>
+                <hr/>
+                <button type="button" class="btn btn-primary" onclick="Cancel()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<h4>Добро пожаловать в информационную систему "Система ЖКХ"</h4>
+@if (User.IsInRole("Owner"))
+{
+    <div class="row" id="BulletinBoardContainer">
+
+    </div>
+    
+}
+<hr/>
+@section scripts
+{
+    <script src="~/js/Views/Home.js"></script>
+}

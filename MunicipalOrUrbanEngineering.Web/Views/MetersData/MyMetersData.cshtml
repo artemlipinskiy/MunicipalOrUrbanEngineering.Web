@@ -1,0 +1,128 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+<input id="flat-id" hidden="hidden" readonly="readonly" value=" @{@ViewData["flatId"]}"/>
+
+
+<div id="CreateDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Создать новый элемент</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input id="tariff-id" hidden="hidden" readonly="readonly" />
+                    <div class="form-group">
+                        <label for="month" class="col-form-label">Значение счетчика</label>
+                        <input type="number" class="form-control" id="create-value">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="CreateItem()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr />
+<br />
+<div class="row">
+    <div class="col-3"><h3>Период</h3></div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <select id="period-selector" class="form-control">
+        </select>
+    </div>
+</div>
+<hr />
+<br />
+<div class="row">
+    <h3>
+        Список необходимых показаний
+    </h3>
+</div>
+<br />
+<table class="table table-hover table-bordered" id="tarifftable">
+    <thead>
+    <tr>
+        <th>
+            Вид услуги
+        </th>
+        <th>
+            Стоимость (руб.)
+        </th>
+        <th>
+            Стандартное значение
+        </th>
+        <th>
+            Единица измерения
+        </th>
+        <th>
+            Начало
+        </th>
+        <th>
+            Окончание
+        </th>
+        <th width="170px">
+            Действия
+        </th>
+    </tr>
+    </thead>
+    <tbody id="tarifftablebody">
+    </tbody>
+</table>
+<hr />
+<br />
+<div class="row">
+    <h3>
+        Список поданных показаний
+    </h3>
+</div>
+<br />
+<table class="table table-hover table-bordered" id="metersdatatable">
+    <thead>
+    <tr>
+        <th>
+            Период
+        </th>
+        <th>
+           Услуга
+        </th>
+        <th>
+            Показания
+        </th>
+    </tr>
+    </thead>
+    <tbody id="metersdatatablebody">
+    </tbody>
+</table>
+
+<br />
+<hr />
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/MyMetersData.js"></script>
+}

@@ -1,0 +1,114 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+<div id="CreateResponseDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Создать новый элемент</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input hidden="hidden" readonly="readonly" type="text" class="form-control" id="request-id">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Название</label>
+                        <input type="text" class="form-control" id="create-response-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Описание</label>
+                        <textarea class="form-control" id="create-response-description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="CreateItem()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="GetResponseDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Ответ на запрос</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Название</label>
+                        <input readonly="readonly" type="text" class="form-control" id="get-response-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Описание</label>
+                        <textarea readonly="readonly" class="form-control" id="get-response-description"></textarea>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<br />
+<br />
+<table class="table table-hover table-bordered" id="requesttable">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                Описание
+            </th>
+            <th>
+                Тип услуги
+            </th>
+            <th>
+                Статус
+            </th>
+            <th>
+                Дата создания
+            </th>
+            <th>
+                Создатель
+            </th>
+            <th width="170px">
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody id="requesttablebody">
+    </tbody>
+</table>
+<br />
+<hr />
+
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/RequestForMe.js"></script>
+}

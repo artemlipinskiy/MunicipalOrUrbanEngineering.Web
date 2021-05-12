@@ -1,0 +1,120 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+<input readonly="readonly" hidden="hidden" id="flat-id" value="@{ @ViewData["flatId"]}" />
+<br />
+<br />
+<hr />
+
+<div id="DetailsDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <table class="table table-hover table-bordered" id="detailstable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Квитанция
+                                </th>
+                                <th>
+                                    Статус
+                                </th>
+                                <th>
+                                    Комментарий
+                                </th>
+                                <th>
+                                    Вид услуги
+                                </th>
+                                <th>
+                                    Счетчик
+                                </th>
+                                <th>
+                                    Объем
+                                </th>
+                                <th>
+                                    Ед. измерения
+                                </th>
+                                <th>
+                                    Стоимость за единицу (руб.)
+                                </th>
+                                <th>
+                                    Итоговая сумма за услугу (руб.)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailstablebody">
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="Cancel()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<table class="table table-hover table-bordered" id="sheettable">
+    <thead>
+        <tr>
+            <th>
+                Период
+            </th>
+            <th>
+                Квартира
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Комментарий
+            </th>
+            <th>
+                Статус
+            </th>
+            <th>
+                Сумма (руб.)
+            </th>
+            <th width="170px">
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody id="sheettablebody">
+    </tbody>
+</table>
+
+
+<br />
+<hr />
+<br />
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+    .modal-lg {
+        max-width: 70%;
+    }
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/MyPaymentSheet.js"></script>
+}

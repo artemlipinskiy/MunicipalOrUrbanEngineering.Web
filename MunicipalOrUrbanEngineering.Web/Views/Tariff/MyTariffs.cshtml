@@ -1,0 +1,67 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+
+<hr />
+<br />
+<div class="row">
+    <h3>
+        Тарифы @{@ViewData["flat"]}
+    </h3>
+    <input id="flat-id" hidden="hidden" readonly="readonly" value=" @{@ViewData["flatId"]}" />
+</div>
+<div class="row">
+    <h3>
+        На дату:
+        @{@ViewData["date"]}
+    </h3>
+</div>
+
+<br />
+<table class="table table-hover table-bordered" id="tarifftable">
+    <thead>
+        <tr>
+            <th>
+                Вид услуги
+            </th>
+            <th>
+                Стоимость (руб.)
+            </th>
+            <th>
+                Стандартное значение
+            </th>
+            <th>
+                Единица измерения
+            </th>
+            <th>
+                Начало
+            </th>
+            <th>
+                Окончание
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tarifftablebody">
+    </tbody>
+</table>
+<br />
+<hr />
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/MyTariffs.js"></script>
+}

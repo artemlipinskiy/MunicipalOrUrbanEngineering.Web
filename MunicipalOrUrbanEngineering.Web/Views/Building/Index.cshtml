@@ -1,0 +1,427 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+<div id="DeleteStreetDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение удаления</b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот элемент?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteStreetConfirm()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="CreateStreetDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Создать новый элемент</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Название</label>
+                        <input type="text" class="form-control" id="create-street-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Описание</label>
+                        <textarea class="form-control" id="create-street-description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="CreateStreetItem()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EditStreetDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Обновление элемента</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Id</label>
+                        <input type="text" class="form-control" id="edit-street-id" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Название</label>
+                        <input type="text" class="form-control" id="edit-street-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Описание</label>
+                        <textarea class="form-control" id="edit-street-description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="UpdateStreet()">Обновить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="DeleteBuildingDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение удаления</b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот элемент?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteBuildingConfirm()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="CreateBuildingDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Создать новый элемент</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Название</label>
+                        <input type="text" class="form-control" id="create-building-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Описание</label>
+                        <textarea class="form-control" id="create-building-description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="CreateBuildingItem()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EditBuildingDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Обновление элемента</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Id</label>
+                        <input type="text" class="form-control" id="edit-building-id" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Улица</label>
+                        <input type="text" class="form-control" id="edit-building-street" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Название</label>
+                        <input type="text" class="form-control" id="edit-building-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Описание</label>
+                        <textarea class="form-control" id="edit-building-description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="UpdateBuilding()">Обновить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="DeleteFlatDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <input id="delete-flat-id" hidden="hidden" readonly="readonly" />
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение удаления</b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот элемент?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteFlatConfirm()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EditFlatDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Обновление элемента</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Id</label>
+                        <input type="text" class="form-control" id="edit-flat-id" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Полный адрес</label>
+                        <input type="text" class="form-control" id="edit-flat-address" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Квартира</label>
+                        <input type="text" class="form-control" id="edit-flat-apartament">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="UpdateFlat()">Обновить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="CreateFlatDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Создать новый элемент</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Улица</label>
+                        <input class="form-control" id="create-flat-street" readonly="readonly"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Дом</label>
+                        <input class="form-control" id="create-flat-building" readonly="readonly"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Квартира</label>
+                        <input type="text" class="form-control" id="create-flat-apartamentnumber">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="CreateFlatItem()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeleteFlatOwnerDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <input id="delete-flatowner-flatid" hidden="hidden" readonly="readonly" />
+            <input id="delete-flatowner-ownerid" hidden="hidden" readonly="readonly" />
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Подтверждение удаления</b></h3>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот элемент?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteFlatOwnerConfirm()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EditFlatOwner" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><b>Обновление элемента</b></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" class="form-control" id="edit-assigment-flatid" hidden="hidden" readonly="readonly">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Полный адрес</label>
+                        <input type="text" class="form-control" id="edit-assigment-address" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Владелец</label>
+                        <select id="edit-assigment-owners" class="form-control"></select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="Cancel()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="AssignOwnerToFlat()">Обновить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<br />
+<div class="row">
+    <div class="col-2">
+        <h3>Улицы</h3>
+    </div>
+    <div class="col-3">
+
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col-2">
+        <h3>Дома</h3>
+    </div>
+    <div class="col-3">
+
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-2">
+        <button type="button" class="btn btn-sm btn-primary" onclick="ShowCreateStreet()">Создать новую улицу</button>
+    </div>
+    <div class="col-3">
+        <select id="street-selector" class="form-control">
+        </select>
+        <br />
+        <button type="button" class="btn btn-danger btn-sm" onclick="ShowDeleteStreet()">
+            Удалить
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" onclick="ShowUpdateStreet()">
+            Обновить
+        </button>
+    </div>
+    <div class="col">
+
+    </div>
+
+
+    <div class="col-2">
+        <button type="button" class="btn btn-sm btn-primary" onclick="ShowCreateBuiilding()">Создать новый дом</button>
+    </div>
+    <div class="col-3">
+
+        <select id="building-selector" class="form-control">
+        </select>
+        <br />
+        <button type="button" class="btn btn-danger btn-sm" onclick="ShowDeleteBuilding()">
+            Удалить
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" onclick="ShowUpdateBuilding()">
+            Обновить
+        </button>
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+</div>
+<br />
+<br />
+<hr />
+<br />
+<div class="col-2">
+    <div class="row">
+        <h3>Квартиры</h3>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-sm btn-primary" onclick="ShowCreateFlat()">Создать новую квартиру</button>
+    </div>
+</div>
+<br />
+<table class="table table-hover table-bordered" id="flattable">
+    <thead>
+        <tr>
+            <th>
+                Адрес
+            </th>
+            <th>
+                Владелец
+            </th>
+            <th width="340px">
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody id="flattablebody">
+    </tbody>
+</table>
+<br />
+<hr />
+
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/Building.js"></script>
+}

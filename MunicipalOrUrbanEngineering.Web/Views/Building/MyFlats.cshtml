@@ -1,0 +1,50 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+<hr />
+<br />
+<div class="col-2">
+    <div class="row">
+        <h3>Квартиры</h3>
+    </div>
+</div>
+<br />
+<table class="table table-hover table-bordered" id="flattable">
+    <thead>
+    <tr>
+        <th>
+            Адрес
+        </th>
+        <th>
+            Владелец
+        </th>
+        <th width="340px">
+            Действия
+        </th>
+    </tr>
+    </thead>
+    <tbody id="flattablebody">
+    </tbody>
+</table>
+<br />
+<hr />
+
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/MyFlats.js"></script>
+}

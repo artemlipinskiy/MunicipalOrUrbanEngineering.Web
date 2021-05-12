@@ -1,0 +1,77 @@
+﻿<div id="loading">
+    <h3 style="color:white">Загрузка, пожалуйста подождите...</h3>
+</div>
+<input readonly="readonly" hidden="hidden" id="page" value="@{ @ViewData["page"]}" />
+<input readonly="readonly" hidden="hidden" id="pageSize" value="@{ @ViewData["pageSize"]}" />
+<br />
+<br />
+<hr />
+
+<table class="table table-hover table-bordered" id="historytable">
+    <thead>
+        <tr>
+            <th>
+                ID сущности
+            </th>
+            <th>
+                Дата
+            </th>
+            <th>
+               Инициатор Сотрудник
+            </th>
+            <th>
+                Инициатор Владелец
+            </th>
+            <th>
+                Сущность
+            </th>
+            <th>
+                Событие
+            </th>
+            <th>
+                Детали
+            </th>
+        </tr>
+    </thead>
+    <tbody id="historytablebody">
+    </tbody>
+</table>
+
+<div class="row">
+
+    <div class="col-2">
+        <button type="button" class="btn btn-success btn-sm" onclick="prev()" id="prev-btn">Назад</button>
+    </div>
+    <div class="col-2">
+        Страница <label id="labelpage"></label> из <label id="labelmaxpage"></label> 
+    </div>
+    <div class="col-2">
+        <button  type="button" class="btn btn-success btn-sm" onclick="next()" id="next-btn">Далее</button>
+    </div>
+</div>
+<br />
+<hr />
+<br />
+<style>
+    #loading {
+        background: no-repeat center center rgba(0,0,0,0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .modal-lg {
+        max-width: 70%;
+    }
+</style>
+@section scripts
+{
+    <script src="~/js/Views/History.js"></script>
+}
